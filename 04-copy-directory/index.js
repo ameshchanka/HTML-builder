@@ -1,7 +1,6 @@
 const fs = require('fs');
 const fsp = require('fs/promises');
-//import { constants } from 'fs';
-//import { copyFile } from 'fs/promises';
+
 const folder = '04-copy-directory/';
 const folderSrc = folder + 'files';
 const folderDest = folder + 'files_copy';
