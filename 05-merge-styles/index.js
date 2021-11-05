@@ -1,13 +1,14 @@
 const fs = require('fs');
 const fsp = require('fs/promises');
+const path = require('path');
 
-const folder = '05-merge-styles/';
-const folderSrc = folder + 'styles';
-const pathFile = folder + 'project-dist/bundle.css';
+const folderSrc = path.join(__dirname, 'styles');
+const pathFile = path.join(__dirname, 'project-dist/bundle.css');
 
 (async function() {
-    let streameWrite = new fs.createWriteStream(pathFile, {flag: 'w', autoClose: false});
+    let streameWrite;
     try{
+        streameWrite = fs.createWriteStream(pathFile, {flag: 'w', autoClose: false});
         await mergeFiles(folderSrc, streameWrite);
     }
     catch(err) {
