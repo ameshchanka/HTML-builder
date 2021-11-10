@@ -41,7 +41,7 @@ buildPage(option);
 async function createOutputDir(dir) {
     return new Promise((resolve, reject) => {
         try {
-            fs.rmdir(dir, {recursive: true }, ()=> {
+            fs.rm(dir, {force: true, recursive: true }, ()=> {
                 fs.mkdir(dir, {recursive: true }, ()=>{
                     resolve(dir);
                 });
@@ -114,7 +114,7 @@ async function mergeStyles(dirStyle, fileOut) {
 }
 
 async function copyAssets(fromDir, toDir) {
-    await fsp.rmdir(toDir, {recursive: true });
+    await fsp.rm(toDir, {force: true, recursive: true });
     await fsp.mkdir(toDir, {recursive: true });
     await copyDir(fromDir, toDir);
 

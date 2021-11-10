@@ -5,7 +5,7 @@ const folderSrc = path.join(__dirname, 'files');
 const folderDest = path.join(__dirname, 'files_copy');
 
 (async function() {
-    await fsp.rmdir(folderDest, {recursive: true });
+    await fsp.rm(folderDest, {force: true, recursive: true });
     await fsp.mkdir(folderDest, {recursive: true });
     await copyDir(folderSrc, folderDest);
 })();
